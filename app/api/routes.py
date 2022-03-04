@@ -1,7 +1,6 @@
-from distutils.log import error
-from email import message
 from app import redirect, url_for, Blueprint, datetime, jsonify
 from app.models.tables import BlogPost, Autor, Site
+import timeit
 
 
 api = Blueprint('api', __name__, template_folder='templates', url_prefix="/api")
@@ -69,8 +68,9 @@ def buscaPorId(id):
         # buscaId = "%{}%".format(id)
 
 
-        blog = BlogPost.query.filter_by(cliques=id).all()
+        blog = BlogPost.query.filter_by(id=id).all()   
 
+        inicio = timeit.default_timer()
         print(blog)
 
         for linha in blog:
@@ -101,6 +101,8 @@ def buscaPorId(id):
                 }
             })
 
+        fim = timeit.default_timer()
+        print("TEMPO: {}".format(fim - inicio))
         return jsonify(lista)
 
     except Exception as error:

@@ -1,9 +1,9 @@
 from flask import Flask, request, flash, url_for, redirect, jsonify, Response, make_response, current_app, Blueprint
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 import datetime
 
-db = SQLAlchemy()
+# db = SQLAlchemy()
 
 def create_app():  # or def create_app(config_class=Config)
 
@@ -14,8 +14,12 @@ def create_app():  # or def create_app(config_class=Config)
 
     # db = SQLAlchemy(app)
     
-    # from app.models.tables import db
+    from app.models.tables import db
     db.init_app(app)
+
+    with app.app_context():
+
+        db.reflect()
 
     from app.api.routes import api
 
@@ -25,6 +29,6 @@ def create_app():  # or def create_app(config_class=Config)
     return app
 
 
-with create_app().app_context():
+# with create_app().app_context():
 
-    db.reflect()
+#     db.reflect()

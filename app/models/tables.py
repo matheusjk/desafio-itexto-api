@@ -1,6 +1,8 @@
-from app import create_app, db, func, datetime
+from app import create_app, func, datetime
 import app
+from flask_sqlalchemy import SQLAlchemy
 
+db = SQLAlchemy()
 
 class BlogPost(db.Model):
     __tablename__ = "blog_post"
