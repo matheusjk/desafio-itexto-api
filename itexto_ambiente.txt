@@ -1,0 +1,4 @@
+1 - PyTest e requests
+2 - a principal dificuldade foi entender os relacionamentos no DER do banco, depois disso ficou facil saber o que fazer
+3 - não
+4 - Python3, venv(maquina virtual python), pip ou poetry ou qualquer outro sistema de gerenciamento de pacotes que você goste, e claro um café pra acompanhar ou nesse calor um matte leão bem gelado kkkkkkk
