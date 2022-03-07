@@ -54,7 +54,7 @@ def buscaPorTexto(busca):
 
         # return jsonify({'site': listaBlogPost})
         
-        return jsonify({'blog': listaBlogPost})
+        return jsonify(listaBlogPost)
 
     except Exception as error:
         print("Error ao executar metodo buscaPorTexto {}".format(error))
@@ -103,7 +103,8 @@ def buscaPorId(id):
 
         fim = timeit.default_timer()
         print("TEMPO: {}".format(fim - inicio))
-        return jsonify(lista)
+        resultado = [lista if len(lista) > 0 else {'mensagem': "ID não existe na base"}]
+        return jsonify(resultado[0])
 
     except Exception as error:
         print("Erro ao executar metodo buscaId {}".format(error))
